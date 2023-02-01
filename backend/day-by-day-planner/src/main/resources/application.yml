@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/daytodayplanner"
+    username: "ika"
+    password: 5555
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+
+rsa:
+  public-key: classpath:certs/public.pem
+  private-key: classpath:certs/private.pem
