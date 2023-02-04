@@ -12,6 +12,7 @@ A day to day planner, where the user can add a do-list, a diary entry and track 
 
 **Backend:** Maven3, Java 17
 
+**Database:**  Postgres
 
 ## Run Locally
 
