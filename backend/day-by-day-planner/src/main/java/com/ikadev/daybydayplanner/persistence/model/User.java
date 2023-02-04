@@ -22,7 +22,7 @@ public class User {
     private String email;
     private String password;
     private String username;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
 }

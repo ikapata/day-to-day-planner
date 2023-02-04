@@ -12,17 +12,16 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "_user")
 public class DayEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private User user;
 
     private Date date;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ToDoEntry> todoList;
 
     private String diaryEntry;
