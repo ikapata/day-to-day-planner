@@ -37,7 +37,19 @@ body {
 .links > li {
   margin: 10px;
   font-size: 30px;
+
 }
+
+.links > li > a {
+  text-decoration: none;
+  color: (var(var(--primary-color)));
+}
+
+.links > li > a:visited {
+  text-decoration: none;
+  color: (var(var(--primary-color)));
+}
+
 
 .home {
   font-size: 40px;
@@ -45,7 +57,6 @@ body {
 }
 
 .react-calendar {
-  width: 700px !important;
   color: var(--secondary-color);
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif;
@@ -91,4 +102,14 @@ body {
 
 .moods {
   font-size: 30px;
+}
+
+.form-group {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.form-control {
+  margin: 10px 0;
 }

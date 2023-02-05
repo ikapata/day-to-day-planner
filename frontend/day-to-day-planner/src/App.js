@@ -16,8 +16,8 @@ function App() {
       element: <MainLayout />,
       children: [
         {
-          path: "/:date",
-          element: <DayEntry />
+          path: ":date",
+          element: <DayEntry  />
         },
         {
           path: "/profile",
