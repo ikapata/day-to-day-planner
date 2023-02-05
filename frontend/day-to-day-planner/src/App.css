@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: darkcyan;
+  --secondary-color: midnightblue;
+  --primary-font: 'Kaushan Script', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
+  background-color: var(--secondary-color);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  color: var(--primary-color);
+  max-width: 100%;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 30px;
+  font-family: var(--primary-font);
 }
 
-.App-link {
-  color: #61dafb;
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+.links > li {
+  margin: 10px;
+  font-size: 30px;
+}
+
+.home {
+  font-size: 40px;
+  margin: 10px;
+}
+
+.react-calendar {
+  width: 700px !important;
+  color: var(--secondary-color);
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+}
+
+.react-calendar__navigation button {
+  color: var(--primary-color);
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.container {
+  display: grid;
+  width: 90%;
+  margin: auto;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "calendar calendar todo diary"
+    ". .  todo diary"
+    ". .  todo mood";
+  font-family: var(--primary-font);
+}
+
+.calendar {
+  grid-area: calendar;
+}
+
+.todo {
+  grid-area: todo;
+}
+
+.diary {
+  grid-area: diary;
+}
+
+.mood {
+  grid-area: mood;
+}
+
+.moods {
+  font-size: 30px;
 }

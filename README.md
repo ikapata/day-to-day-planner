@@ -1,7 +1,7 @@
 
 # Day to Day Planner
 
-A day-to-day planner, where the user can add a do-list, a diary entry and track their mood for each day. 
+A day-to-day planner, where the user can add a to-do list, a diary entry and track their mood for each day. 
 
 
 
@@ -45,7 +45,7 @@ Start react on port 3000.
 
 ### Backend
 
-Add your database name, user and password to the properties.yml file. Then run with Maven:
+Add your database name, user and password to the application.yml file. Then run with Maven:
 
 ```bash
   cd backend/day-to-day-planner
@@ -60,9 +60,9 @@ In the future, this app will be dockerized.
 ## Roadmap
 
 - [x]  Setup project
-- [x]  Add Spring Security and Users
-- [x]  Test backend
-- [ ]  Add frontend
+- [x]  Add Spring Security and Users 
+- [ ]  Add frontend (first draft)
+- [ ]  Test backend (a part of tests is already there)
 - [ ]  Profile Page
 - [ ]  Dockerize
 - [ ]  Google Calendar Synchronisation
