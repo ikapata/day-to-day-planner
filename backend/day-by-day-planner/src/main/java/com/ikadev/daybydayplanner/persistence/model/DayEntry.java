@@ -3,6 +3,7 @@ package com.ikadev.daybydayplanner.persistence.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class DayEntry {
     @ManyToOne
     private User user;
 
-    private Date date;
+    private LocalDate date;
     @OneToMany(cascade = CascadeType.ALL)
     private List<ToDoEntry> todoList;
 

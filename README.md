@@ -1,7 +1,7 @@
 
 # Day to Day Planner
 
-A day to day planner, where the user can add a do-list, a diary entry and track their mood for each day. 
+A day-to-day planner, where the user can add a do-list, a diary entry and track their mood for each day. 
 
 
 
@@ -54,14 +54,14 @@ Add your database name, user and password to the properties.yml file. Then run w
 
 It will start the server on port 8080.
 
-In future, this app will be dockerized. 
+In the future, this app will be dockerized. 
 
 
 ## Roadmap
 
 - [x]  Setup project
 - [x]  Add Spring Security and Users
-- [ ]  Test backend
+- [x]  Test backend
 - [ ]  Add frontend
 - [ ]  Profile Page
 - [ ]  Dockerize

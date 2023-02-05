@@ -4,6 +4,7 @@ import com.ikadev.daybydayplanner.persistence.repository.DayEntryRepository;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +17,12 @@ public class EntryService {
         this.dayEntryRepository = dayEntryRepository;
     }
 
-    public List<DayEntry> getAllEntriesForUser(Principal principal) {
-        return dayEntryRepository.findByUserUsername(principal.getName());
+    public List<DayEntry> getAllEntriesForUser(String username) {
+        return dayEntryRepository.findByUserUsername(username);
     }
 
-    public Optional<DayEntry> getEntryForUserAndDate(Date date, Principal principal) {
-        return dayEntryRepository.findByUserUsernameAndDate(principal.getName(), date);
+    public Optional<DayEntry> getEntryForUserAndDate(LocalDate date, String username) {
+        return dayEntryRepository.findByUserUsernameAndDate(username, date);
     }
 
     public DayEntry saveEntry(DayEntry dayEntry) {

@@ -6,7 +6,7 @@ spring:
   jpa:
     database: POSTGRESQL
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
 rsa:
   public-key: classpath:certs/public.pem
