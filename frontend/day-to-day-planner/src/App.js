@@ -7,38 +7,41 @@ import DayEntry from "./components/DayEntry";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import {UserTokenContextProvider} from "./hooks/UserTokenContext";
 
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout />,
-      children: [
+    const router = createBrowserRouter([
         {
-          path: ":date",
-          element: <DayEntry  />
-        },
-        {
-          path: "/profile",
-          element: <Profile />
-        },
-        {
-          path: "/login",
-          element: <Login />
-        },
-        {
-          path: "/register", 
-          element: <Register />
+            path: "/",
+            element: <MainLayout/>,
+            children: [
+                {
+                    path: ":date",
+                    element: <DayEntry/>
+                },
+                {
+                    path: "/profile",
+                    element: <Profile/>
+                },
+                {
+                    path: "/login",
+                    element: <Login/>
+                },
+                {
+                    path: "/register",
+                    element: <Register/>
+                }
+            ]
         }
-      ]
-    }
-  ])
-  return (
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  );
+    ])
+    return (
+        <React.StrictMode>
+            <UserTokenContextProvider>
+                <RouterProvider router={router}/>
+            </UserTokenContextProvider>
+        </React.StrictMode>
+    );
 }
 
 export default App;

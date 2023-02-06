@@ -20,7 +20,11 @@ export default function Register() {
     }
     const navigate = useNavigate();
     const register = () => {
-        // fetch to login /logout
+            fetch("http://localhost:8080/api/auth/register", {
+                method: "POST",
+                body: userData
+            }).then(data => console.log(data))
+            .catch(err => console.log(err));
         navigate("/login");
     }
     return (<div className="form-group">

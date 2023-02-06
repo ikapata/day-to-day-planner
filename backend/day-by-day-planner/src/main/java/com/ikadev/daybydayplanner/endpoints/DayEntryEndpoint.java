@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @RestController
+//@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = {"Authorization", "Origin"})
 @RequestMapping("api/entries")
 public class DayEntryEndpoint {
     private final EntryService entryService;
@@ -30,7 +30,7 @@ public class DayEntryEndpoint {
         return entryService.getAllEntriesForUser(principal.getName());
     }
 
-    @GetMapping(path="{date}")
+    @GetMapping(path = "{date}")
     public DayEntry getEntryForDate(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date, Principal principal) {
         return entryService.getEntryForUserAndDate(date, principal.getName()).orElse(null);
     }

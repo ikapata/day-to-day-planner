@@ -44,8 +44,6 @@ export default function ToDoList(props) {
             newToDoList
         )
     }
-    console.log(currentItem);
-    console.log(props.todoList)
     let toDoListItems = props.todoList.map(item => {
         return <li key={item.name}>
             <input type="checkbox"  checked={item.checked} onChange={(event) => handleCheckChange(event, item)} />

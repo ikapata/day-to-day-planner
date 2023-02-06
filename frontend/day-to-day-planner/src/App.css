@@ -42,12 +42,12 @@ body {
 
 .links > li > a {
   text-decoration: none;
-  color: (var(var(--primary-color)));
+  color: var(--primary-color);
 }
 
 .links > li > a:visited {
   text-decoration: none;
-  color: (var(var(--primary-color)));
+  color: var(--primary-color);
 }
 
 
@@ -79,7 +79,7 @@ body {
   grid-template-rows: auto;
   grid-template-areas: 
     "calendar calendar todo diary"
-    ". .  todo diary"
+    "save save  todo diary"
     ". .  todo mood";
   font-family: var(--primary-font);
 }
@@ -112,4 +112,9 @@ body {
 
 .form-control {
   margin: 10px 0;
+}
+
+.save-btn {
+    grid-area: save;
+
 }
