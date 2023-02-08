@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/auth")
 public class AuthEndpoint {
     private final TokenService tokenService;
@@ -21,7 +21,7 @@ public class AuthEndpoint {
         this.userService = userService;
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public User registerUser(@RequestBody @Validated User user) {
         if (userService.usernameExists(user.getUsername())) {
             throw new ResponseStatusException(

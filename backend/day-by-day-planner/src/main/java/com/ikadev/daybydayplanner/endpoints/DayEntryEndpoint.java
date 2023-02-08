@@ -13,7 +13,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = {"Authorization", "Origin"})
 @RequestMapping("api/entries")
 public class DayEntryEndpoint {
     private final EntryService entryService;
