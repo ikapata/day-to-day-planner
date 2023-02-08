@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router';
+import {BASE_URI} from "../constants/constants";
 
 export default function Register() {
     const [userData, setUserData] = useState({
@@ -24,7 +25,7 @@ export default function Register() {
             method: 'POST', headers: headers, body: raw, redirect: 'follow', cors: "no-cors", referrer: "no-referrer"
         };
 
-        fetch("http://localhost:8080/api/auth/register", requestOptions)
+        fetch(BASE_URI + "/api/auth/register", requestOptions)
             .then(result => navigate("/login"))
             .catch(error => console.log('error', error));
     }

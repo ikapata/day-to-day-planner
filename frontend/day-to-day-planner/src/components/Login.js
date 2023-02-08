@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router";
 import {useUserTokenUpdateContext} from "../hooks/UserTokenContext";
+import {BASE_URI} from "../constants/constants";
 
 export default function Login() {
     const [loginCreds, setLoginCreds] = useState({
@@ -21,7 +22,7 @@ export default function Login() {
         })
     }
     const login = () => {
-        fetch("http://localhost:8080/api/auth/login", {
+        fetch( BASE_URI + "/api/auth/login", {
             method: "POST",
             headers: {
                 authorization: "Basic " + btoa(loginCreds.username + ":" + loginCreds.password)

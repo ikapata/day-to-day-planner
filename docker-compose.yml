@@ -1,0 +1,35 @@
+version: '3'
+services:
+  frontend:
+    build: frontend/day-to-day-planner
+    ports:
+      - "3000:3000"
+    container_name: frontend
+    restart: always
+    links:
+      - backend
+  backend:
+    build: backend/day-by-day-planner
+    ports:
+      - "8080:8080"
+    container_name: backend
+
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/daytodayplanner
+      - SPRING_DATASOURCE_USERNAME=daytodayplanner
+      - SPRING_DATASOURCE_PASSWORD=daytodayplanner
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  db:
+    image: postgres:11.6-alpine
+    ports:
+      - "5431:5432"
+    container_name: db
+    restart: always
+    environment:
+      - POSTGRES_USER=daytodayplanner
+      - POSTGRES_PASSWORD=daytodayplanner
+      - POSTGRES_DB=daytodayplanner

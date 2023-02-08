@@ -4,6 +4,7 @@ import CustomCalendar from "./Calendar";
 import DiaryEntry from "./DiaryEntry";
 import MoodTracker from "./MoodTracker";
 import ToDoList from "./ToDoList";
+import {BASE_URI} from "../constants/constants";
 
 export default function DayEntry() {
     let {date} = useParams();
@@ -38,7 +39,7 @@ export default function DayEntry() {
                 referer: "no-referer"
             };
 
-            fetch("http://localhost:8080/api/entries/" + dateString, requestOptions)
+            fetch(BASE_URI + "/api/entries/" + dateString, requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     setData(data);
@@ -64,7 +65,7 @@ export default function DayEntry() {
             const headers = new Headers();
             headers.append("Authorization", "Bearer " + localStorage.getItem("userToken"));
             headers.append("Content-Type", "application/json");
-            fetch("http://localhost:8080/api/entries", {
+            fetch(BASE_URI + "/api/entries", {
                 method: "POST",
                 headers: headers,
                 referrer: "no-referrer",

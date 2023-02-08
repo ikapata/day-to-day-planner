@@ -14,7 +14,7 @@ class UserServiceTest {
     UserRepository userRepository;
     @MockBean
     PasswordEncoder passwordEncoder;
-    
+
 
     @Test
     void saveNewUser() {
