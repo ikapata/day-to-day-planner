@@ -45,7 +45,7 @@ export default function ToDoList(props) {
         )
     }
     let toDoListItems = props.todoList.map(item => {
-        return <li key={item.name}>
+        return <li key={item.name} className="to-do-item">
             <input type="checkbox"  checked={item.checked} onChange={(event) => handleCheckChange(event, item)} />
             <span style={{margin: "10px"}}>{item.name}</span>
             <button onClick={() => handleEdit(item.name)}>✎</button>
@@ -54,7 +54,7 @@ export default function ToDoList(props) {
     })
     return (
         <div className="todo">
-            <h2>Your todo list for today:</h2>
+            <h2>Your to-do list for today:</h2>
             <input type="text" value={currentItem} onChange={(event) => setCurrentItem(event.target.value)} /><button onClick={handleAdd}>+</button>
             <ul className="todo-list">
                 {toDoListItems}

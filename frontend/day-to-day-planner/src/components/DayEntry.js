@@ -1,63 +1,88 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router";
 import CustomCalendar from "./Calendar";
 import DiaryEntry from "./DiaryEntry";
 import MoodTracker from "./MoodTracker";
 import ToDoList from "./ToDoList";
 
 export default function DayEntry() {
-    let { date } = useParams();
+    let {date} = useParams();
 
     const [dateFromCalendar, setDateFromCalendar] = useState(new Date(date));
     const [mood, setMood] = useState("OK");
     const [toDoList, setToDoList] = useState([]);
     const [diaryEntry, setDiaryEntry] = useState("");
+    const [entryId, setEntryId] = useState(null);
+    function setData(data) {
+        if (data) {
+            setEntryId(data.id);
+            setMood(data.mood);
+            setDiaryEntry(data.diaryEntry);
+            setToDoList(data.todoList);
+        }}
 
-    useEffect(() => {
-        const headers = new Headers();
-        headers.append(
-            "Authorization",
-            "Bearer " + localStorage.getItem("userToken")
-        );
-        headers.append("Content-Type", "application/json");
-        fetch("http://http://localhost:8080/api/entries/" + date, {
-            headers: headers,
-            method: "GET",
-            mode: "cors",
-            cache: "no-cache",
-            credentials: "same-origin",
-            referrerPolicy: "no-referrer",
+        useEffect(() => {
+            let dateString = dateFromCalendar.toLocaleDateString('zh-Hans-CN', {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+            }).replaceAll("/", "-");
 
-        }).then(data => data.json())
-        .then(data => console.log(data))
-        .catch(err => console.error(err));
+            const headers = new Headers();
+            headers.append("Content-Type", "application/json");
+            headers.append("authorization", "Bearer " + localStorage.getItem("userToken"));
+            let requestOptions = {
+                method: 'GET',
+                headers: headers,
+                redirect: 'follow',
+                referer: "no-referer"
+            };
 
-    }, [date])
+            fetch("http://localhost:8080/api/entries/" + dateString, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    setData(data);
+                })
+                .catch(error => {
+                    setEntryId(null);
+                    setToDoList([]);
+                    setMood("OK");
+                    setDiaryEntry("");
+                });
+
+        }, [date])
 
 
-    const saveForDate = () => {
-        const headers = new Headers();
-        headers.append("Authorization", localStorage.getItem("userToken"));
-        headers.append("Content-Type", "application/json");
-        fetch("http://localhost:8080/api/entries", {
-            method: "POST",
-            headers: headers,
-            body: {
+        const saveForDate = () => {
+            const raw = JSON.stringify({
+                "id": entryId,
                 "date": date,
                 "diaryEntry": diaryEntry,
                 "mood": mood,
-                "toDoList": toDoList
-            }
-        }).then(data => data.json())
-            .then(data => console.log(data))
-            .catch(err => console.error(err));
-    }
+                "todoList": toDoList
+            });
+            const headers = new Headers();
+            headers.append("Authorization", "Bearer " + localStorage.getItem("userToken"));
+            headers.append("Content-Type", "application/json");
+            fetch("http://localhost:8080/api/entries", {
+                method: "POST",
+                headers: headers,
+                referrer: "no-referrer",
+                body: raw,
+                redirect: 'follow'
+            }).then(data => data.json())
+                .then(data => {
+                    setData(data);
+                })
+                .catch(err => console.error(err));
+        }
 
-    return <div className="container">
-        <button className="save-btn" onClick={saveForDate} >Save</button>
-        <CustomCalendar date={dateFromCalendar} setDate={setDateFromCalendar} />
-        <MoodTracker mood={mood} setMood={setMood} />
-        <ToDoList todoList={toDoList} setToDoList={setToDoList} />
-        <DiaryEntry entry={diaryEntry} setEntry={setDiaryEntry} />
-    </div>
+        return <div className="container">
+            <button className="save-btn" onClick={saveForDate}>Save</button>
+            <CustomCalendar date={dateFromCalendar} setDate={setDateFromCalendar}/>
+            <MoodTracker mood={mood} setMood={setMood}/>
+            <ToDoList todoList={toDoList} setToDoList={setToDoList}/>
+            <DiaryEntry entry={diaryEntry} setEntry={setDiaryEntry}/>
+        </div>
+
 }

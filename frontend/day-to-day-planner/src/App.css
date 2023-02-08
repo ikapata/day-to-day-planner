@@ -1,120 +1,166 @@
 :root {
-  --primary-color: darkcyan;
-  --secondary-color: midnightblue;
-  --primary-font: 'Kaushan Script', cursive;
+    --primary-color: darkcyan;
+    --secondary-color: midnightblue;
+    --primary-font: 'Kaushan Script', cursive;
+    --secondary-font: Arial, Helvetica, sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
 }
 
 .nav {
-  background-color: var(--secondary-color);
-  display: flex;
-  flex-wrap: wrap;
-  color: var(--primary-color);
-  max-width: 100%;
-  justify-content: space-between;
-  padding-right: 15px;
-  padding-left: 30px;
-  font-family: var(--primary-font);
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--primary-color);
+    max-width: 100%;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-left: 30px;
+    font-family: var(--primary-font);
 }
 
 .links {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  list-style: none;
-  margin: 0;
-  padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
 
 }
 
 
-
 .links > li {
-  margin: 10px;
-  font-size: 30px;
+    margin: 10px;
+    font-size: 30px;
 
 }
 
 .links > li > a {
-  text-decoration: none;
-  color: var(--primary-color);
+    text-decoration: none;
+    color: var(--primary-color);
 }
 
 .links > li > a:visited {
-  text-decoration: none;
-  color: var(--primary-color);
+    text-decoration: none;
+    color: var(--primary-color);
 }
 
 
 .home {
-  font-size: 40px;
-  margin: 10px;
+    font-size: 40px;
+    margin: 10px;
 }
 
 .react-calendar {
-  color: var(--secondary-color);
-  border-radius: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.125em;
+    color: var(--secondary-color);
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em;
+    margin: auto;
 }
 
 .react-calendar__navigation button {
-  color: var(--primary-color);
-  min-width: 44px;
-  background: none;
-  font-size: 16px;
-  margin-top: 8px;
+    color: var(--primary-color);
+    min-width: 44px;
+    background: none;
+    font-size: 16px;
+    margin-top: 8px;
 }
 
 .container {
-  display: grid;
-  width: 90%;
-  margin: auto;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas: 
+    display: grid;
+    width: 90%;
+    margin: auto;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
     "calendar calendar todo diary"
-    "save save  todo diary"
-    ". .  todo mood";
-  font-family: var(--primary-font);
+    "save save  todo mood";
+    font-family: var(--primary-font);
+}
+
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+    .container {
+        grid-template-areas:
+    "calendar"
+    "todo"
+    "diary"
+    "mood"
+    "save";
+        margin: auto;
+        padding-bottom: 30px;
+    }
+    .todo {
+        margin: auto;
+    }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (min-width: 993px) {
+    .container {
+        grid-template-areas:
+    "calendar calendar todo diary"
+    "save save  todo mood";
+    }
 }
 
 .calendar {
-  grid-area: calendar;
+    grid-area: calendar;
+    margin: auto;
 }
 
 .todo {
-  grid-area: todo;
+    grid-area: todo;
 }
 
 .diary {
-  grid-area: diary;
+    grid-area: diary;
+    margin: auto;
 }
 
 .mood {
-  grid-area: mood;
+    grid-area: mood;
+    margin: auto;
 }
 
 .moods {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 .form-group {
-  width: 50%;
-  margin: auto;
-  text-align: center;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    font-family: var(--primary-font);
 }
 
 .form-control {
-  margin: 10px 0;
+    margin: 10px 0;
 }
 
 .save-btn {
     grid-area: save;
+    font-family: var(--primary-font);
+    background-color: var(--secondary-color);
+    color: white;
+    width: 50%;
+    border-radius: 10px;
+    font-size: 120%;
+    display: block;
+    margin: 30px auto auto;
+}
 
+textarea {
+    font-family: var(--secondary-font);
+}
+
+.to-do-item {
+    font-family: var(--secondary-font);
 }

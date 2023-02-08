@@ -8,6 +8,7 @@ export default function Login() {
         "password": ""
     });
 
+    const [error, setError] = useState("");
     const navigate = useNavigate();
     const setUserToken = useUserTokenUpdateContext();
 
@@ -20,7 +21,6 @@ export default function Login() {
         })
     }
     const login = () => {
-
         fetch("http://localhost:8080/api/auth/login", {
             method: "POST",
             headers: {
@@ -28,23 +28,30 @@ export default function Login() {
             }
         }).then(res => res.text())
             .then(data => {
-                setUserToken(data);
-                localStorage.setItem("userToken", data)
+                if (data) {
+                    setUserToken(data);
+                    localStorage.setItem("userToken", data);
+                    let dateString = new Date().toLocaleDateString('zh-Hans-CN', {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                    }).replaceAll("/", "-");
+                    navigate("/" + dateString);
+                } else {
+                    setError("The credentials are not correct.");
+                }
             });
-        let date = new Date();
-        let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-        let month = date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth();
-        let dateString = date.getFullYear() + "-" + month + "-" + day;
-        navigate("/" + dateString);
     }
     return (<div className="form-group">
         <h1>Login</h1>
+        {error && <div style={{color: "white", background: "red", borderRadius: "10px", padding: "10px", width: "50%"}}
+                       className="error">{error}</div>}
         <label>Username: </label>
         <input type="text" className="form-control" name="username" value={loginCreds.username}
                onChange={handleChange}/>
         <br/><label>Password: </label>
         <input type="password" className="form-control" name="password" value={loginCreds.password}
                onChange={handleChange}/>
-        <button style={{display: "block", margin: "auto"}} onClick={login}>Log In</button>
+        <button className="save-btn" onClick={login}>Log In</button>
     </div>)
 }
