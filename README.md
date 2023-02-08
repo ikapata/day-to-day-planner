@@ -28,6 +28,16 @@ Go to the project directory
   cd day-to-day-planner
 ```
 
+### Docker
+The easiest way to start the app is using docker-compose. 
+You only need Docker installed !
+To start the app run:
+```bash
+  docker compose up
+```
+The app will be available at http://localhost:3000!
+
+
 ### Frontend
 
 Install dependencies
@@ -54,7 +64,6 @@ Add your database name, user and password to the application.yml file. Then run 
 
 It will start the server on port 8080.
 
-In the future, this app will be dockerized. 
 
 
 ## Screenshots
