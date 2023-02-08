@@ -57,13 +57,19 @@ It will start the server on port 8080.
 In the future, this app will be dockerized. 
 
 
+## Screenshots
+
+<img src="images/register_page.png" width="400px">
+<img src="images/login_page.png" width="400px">
+<img src="images/calendar.png" width="400px">
+
+
 ## Roadmap
 
 - [x]  Setup project
 - [x]  Add Spring Security and Users 
-- [ ]  Add frontend (first draft)
-- [ ]  Test backend (a part of tests is already there)
-- [ ]  Profile Page
+- [x]  Add frontend (first draft)
+- [x]  Test backend (a part of tests is already there)
 - [ ]  Dockerize
-- [ ]  Google Calendar Synchronisation
+- [ ]  Profile Page
 
