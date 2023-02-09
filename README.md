@@ -30,7 +30,7 @@ Go to the project directory
 
 ### Docker
 The easiest way to start the app is using docker-compose. 
-You only need Docker installed !
+You only need Docker installed!
 To start the app run:
 ```bash
   docker compose up
@@ -77,8 +77,9 @@ It will start the server on port 8080.
 
 - [x]  Setup project
 - [x]  Add Spring Security and Users 
-- [x]  Add frontend (first draft)
-- [x]  Test backend (a part of tests is already there)
-- [ ]  Dockerize
+- [x]  Add frontend
+- [x]  Test backend
+- [x]  Dockerize
 - [ ]  Profile Page
+- [ ]  Google synchronisation
 
