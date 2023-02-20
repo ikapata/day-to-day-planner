@@ -33,3 +33,5 @@ services:
       - POSTGRES_USER=daytodayplanner
       - POSTGRES_PASSWORD=daytodayplanner
       - POSTGRES_DB=daytodayplanner
+    volumes:
+      - /var/lib/postgresql/data
