@@ -13,8 +13,8 @@ export default function NavBar() {
         <div className="home">Day To Day Planner</div>
         <ul className="links">
             {localStorage.getItem("userToken") ? <>
-                    <li onClick={logout}>Logout</li>
                     <li><Link to={"/profile"}>Profile</Link></li>
+                    <li><Link to={"/login"} onClick={logout}>Logout</Link></li>
                 </> :
                 <>
                     <li><Link to={"/login"}>Login</Link></li>

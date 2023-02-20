@@ -30,26 +30,22 @@ body {
     list-style: none;
     margin: 0;
     padding: 10px;
-
 }
 
-
-.links > li {
+.links>li {
     margin: 10px;
     font-size: 30px;
-
 }
 
-.links > li > a {
+.links>li>a {
     text-decoration: none;
     color: var(--primary-color);
 }
 
-.links > li > a:visited {
+.links>li>a:visited {
     text-decoration: none;
     color: var(--primary-color);
 }
-
 
 .home {
     font-size: 40px;
@@ -78,22 +74,13 @@ body {
     margin: auto;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-template-areas:
-    "calendar calendar todo diary"
-    "save save  todo mood";
+    grid-template-areas: "calendar calendar todo diary" "save save  todo mood";
     font-family: var(--primary-font);
 }
 
-
-/* On screens that are 992px or less, set the background color to blue */
 @media screen and (max-width: 992px) {
     .container {
-        grid-template-areas:
-    "calendar"
-    "todo"
-    "diary"
-    "mood"
-    "save";
+        grid-template-areas: "calendar" "todo" "diary" "mood" "save";
         margin: auto;
         padding-bottom: 30px;
     }
@@ -102,12 +89,9 @@ body {
     }
 }
 
-/* On screens that are 600px or less, set the background color to olive */
 @media screen and (min-width: 993px) {
     .container {
-        grid-template-areas:
-    "calendar calendar todo diary"
-    "save save  todo mood";
+        grid-template-areas: "calendar calendar todo diary" "save save  todo mood";
     }
 }
 
