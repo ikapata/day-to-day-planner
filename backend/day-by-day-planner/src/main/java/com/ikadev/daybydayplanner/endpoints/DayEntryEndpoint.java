@@ -2,6 +2,7 @@ package com.ikadev.daybydayplanner.endpoints;
 
 
 import com.ikadev.daybydayplanner.persistence.model.DayEntry;
+import com.ikadev.daybydayplanner.persistence.model.Mood;
 import com.ikadev.daybydayplanner.persistence.model.User;
 import com.ikadev.daybydayplanner.persistence.repository.UserRepository;
 import com.ikadev.daybydayplanner.service.EntryService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/entries")
@@ -18,8 +20,7 @@ public class DayEntryEndpoint {
     private final EntryService entryService;
     private final UserRepository userRepository;
 
-    public DayEntryEndpoint(EntryService entryService,
-                            UserRepository userRepository) {
+    public DayEntryEndpoint(EntryService entryService, UserRepository userRepository) {
         this.entryService = entryService;
         this.userRepository = userRepository;
     }
@@ -32,6 +33,11 @@ public class DayEntryEndpoint {
     @GetMapping(path = "{date}")
     public DayEntry getEntryForDate(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date, Principal principal) {
         return entryService.getEntryForUserAndDate(date, principal.getName()).orElse(null);
+    }
+
+    @GetMapping(path = "date-moods/{year}")
+    public Map<Mood, List<LocalDate>> getMoodsForYear(@PathVariable("year") int year, Principal principal) {
+        return entryService.getMoodsForYear(year, principal);
     }
 
     @PostMapping

@@ -5,6 +5,7 @@ import DiaryEntry from "./DiaryEntry";
 import MoodTracker from "./MoodTracker";
 import ToDoList from "./ToDoList";
 import {BASE_URI} from "../constants/constants";
+import { getFormattedDate } from "../utils/dateUtils";
 
 export default function DayEntry() {
     let {date} = useParams();
@@ -23,11 +24,7 @@ export default function DayEntry() {
         }}
 
         useEffect(() => {
-            let dateString = dateFromCalendar.toLocaleDateString('zh-Hans-CN', {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-            }).replaceAll("/", "-");
+            let dateString = getFormattedDate(dateFromCalendar);
 
             const headers = new Headers();
             headers.append("Content-Type", "application/json");

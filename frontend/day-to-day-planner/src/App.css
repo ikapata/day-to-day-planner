@@ -3,6 +3,11 @@
     --secondary-color: midnightblue;
     --primary-font: 'Kaushan Script', cursive;
     --secondary-font: Arial, Helvetica, sans-serif;
+    --great-color: rgb(236, 248, 11);
+    --good-color: rgb(4, 255, 96);
+    --ok-color: rgb(0, 255, 247);
+    --bad-color: rgb(255, 183, 0);
+    --terrible-color: rgb(236, 61, 61);
 }
 
 body {
@@ -148,3 +153,123 @@ textarea {
 .to-do-item {
     font-family: var(--secondary-font);
 }
+
+/* MOOD OVERVIEW  */
+
+table.calendar {
+    border-collapse: collapse;
+  }
+  
+  table.calendar thead {
+    background-color: var(--secondary-color);
+    font-family: var(--primary-font);
+    color: white;
+    margin-bottom: 3px;
+    border-bottom: 2px solid white
+  }
+
+
+  table.calendar thead th {
+    font-weight: lighter;
+    padding: 10px 3px;
+  }
+  
+  table.calendar thead th.bolder {
+    font-weight: bold;
+  }
+  
+  table.calendar tbody {
+    font-size: 0.8em;
+  }
+  
+  table.calendar td {
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid rgba(185, 185, 185, 0.13);
+    min-width: 15px;
+  }
+  
+  table.calendar tr:last-child td {
+    border-bottom: none;
+  }
+  
+  table.calendar td.month-name {
+    font-weight: bold;
+    text-align: left;
+    cursor: default;
+    border-left: none;
+    font-family: var(--primary-font);
+  }
+
+  
+  table.calendar td.prev-month,
+  table.calendar td.next-month {
+    color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+  
+  table.calendar td.week-separator {
+    pointer-events: none;
+    padding: 0;
+    width: 8px;
+    min-width: 0;
+  }
+  
+  table.calendar td.GREAT {
+    background-color: var(--great-color);
+  }
+  table.calendar td.GOOD {
+    background-color: var(--good-color);
+  }
+  table.calendar td.OK {
+    background-color: var(--ok-color);
+  }
+  table.calendar td.BAD {
+    background-color: var(--bad-color);
+  }
+  table.calendar td.TERRIBLE {
+    background-color: var(--terrible-color);
+  }
+  table.calendar td.weekend {
+    font-style: italic;
+    font-weight: bold;
+  }
+  
+  table.calendar td.bolder {
+    font-weight: bold;
+  }
+  
+
+  div.calendar-controls {
+    margin: 5px auto;
+    display: table;
+    font-size: 25px;
+    line-height: 35px;
+  }
+  
+  div.calendar-controls div {
+    display: inline;
+  }
+  
+  div.calendar-controls .current-year {
+    margin: 0 30px;
+    font-family: var(--primary-font);
+  }
+  
+  div.calendar-controls .control {
+    font-weight: bolder;
+    color: #323232;
+    font-size: 0.8em;
+    cursor: pointer;
+  }
+  
+  div.calendar-controls .today {
+    position: absolute;
+    right: 15px;
+    line-height: 35px;
+    font-size: 0.6em;
+    text-transform: uppercase;
+  }
+  

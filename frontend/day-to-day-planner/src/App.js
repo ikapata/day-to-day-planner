@@ -8,6 +8,7 @@ import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import {UserTokenContextProvider} from "./hooks/UserTokenContext";
+import MoodOverview from './components/MoodOverview';
 
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
                 {
                     path: "/profile",
                     element: <Profile/>
+                },
+                {
+                    path: "/mood-overview",
+                    element: <MoodOverview />
                 },
                 {
                     path: "/login",
