@@ -76,10 +76,13 @@ It will start the server on port 8080.
 ## Roadmap
 
 - [x]  Setup project
-- [x]  Add Spring Security and Users 
+- [x]  Add Spring Security and Users
 - [x]  Add frontend
-- [x]  Test backend
+- [x]  Test backend (more tests to come!)
 - [x]  Dockerize
+- [x]  Mood Tracker Page
 - [ ]  Profile Page
-- [ ]  Google synchronisation
+- [ ]  Google synchronization
+
+Stay tuned for more features in the future!
 
