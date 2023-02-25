@@ -28,6 +28,16 @@ body {
     font-family: var(--primary-font);
 }
 
+.home>a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.home>a:visited {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 .links {
     display: flex;
     flex-direction: row;
@@ -152,6 +162,12 @@ textarea {
 
 .to-do-item {
     font-family: var(--secondary-font);
+    list-style-type: none;
+}
+
+.to-do-item-input:checked + label {
+  text-decoration: line-through;
+  color: grey;
 }
 
 /* MOOD OVERVIEW  */
@@ -272,4 +288,36 @@ table.calendar {
     font-size: 0.6em;
     text-transform: uppercase;
   }
+
+  .great {
+    background-color: var(--great-color);
+  }
+  .good {
+    background-color: var(--good-color);
+  }
   
+  .ok {
+    background-color: var(--ok-color);
+  }
+
+  .bad {
+    background-color: var(--bad-color);
+  }
+
+  .terrible {
+    background-color: var(--terrible-color);
+  }
+
+  .box {
+    padding: 7px;
+    border-radius: 10px;
+    margin: 5px;
+  }
+
+  .legend {
+    margin: auto;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

@@ -11,7 +11,7 @@ export default function NavBar() {
     }
 
     return (<nav className="nav">
-        <div className="home"><Link to={"/" + getFormattedDate(new Date())}>Day To Day Planner</Link></div>
+        <div className="home"><Link to={localStorage.getItem("userToken") ? "/" + getFormattedDate(new Date()) : "/login"}>Day To Day Planner</Link></div>
         <ul className="links">
             {localStorage.getItem("userToken") ? <>
                     <li><Link to={"/profile"}>Profile</Link></li>

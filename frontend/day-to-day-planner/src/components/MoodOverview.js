@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { Calendar, CalendarControls } from 'react-yearly-calendar';
 import { BASE_URI } from '../constants/constants';
+import {getFormattedDate} from '../utils/dateUtils';
+import { useNavigate } from'react-router-dom';
 
 export default function MoodOverview() {
+    const navigate = useNavigate();
 
     const [year, setYear] = React.useState(new Date().getFullYear());
     function onDatePicked(date) {
-        alert(date);
+        let dateFormatted = getFormattedDate(date._d);
+        navigate("/" + dateFormatted);
       }
 
     const [dateMoods, setDateMoods] = React.useState({});
@@ -40,13 +44,13 @@ export default function MoodOverview() {
             />
         <Calendar year={year} onPickDate={onDatePicked} customClasses={dateMoods} />
         <br />
-    {/* <div className="legend">
+    <div className="legend">
     <h3>Moods:</h3>
-        <span className="great">Great</span>
-        <span className="good">Good</span>
-        <span className="ok">Ok</span>
-        <span className="bad">Bad</span>
-        <span className="terrible">Terrible</span>
-    </div> */}
+        <span className="box great">Great</span>
+        <span className="box good">Good</span>
+        <span className="box ok">Ok</span>
+        <span className="box bad">Bad</span>
+        <span className="box terrible">Terrible</span>
+    </div>
     </>
 }
