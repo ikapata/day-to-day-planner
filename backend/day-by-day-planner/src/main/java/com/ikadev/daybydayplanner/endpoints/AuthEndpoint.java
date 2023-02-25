@@ -20,7 +20,7 @@ public class AuthEndpoint {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public User registerUser(@RequestBody @Validated User user) {
         if (userService.usernameExists(user.getUsername())) {
             throw new ResponseStatusException(
@@ -30,6 +30,7 @@ public class AuthEndpoint {
         }
         return userService.save(user);
     }
+
 
     @PostMapping("login")
     public String login(Authentication authentication) {

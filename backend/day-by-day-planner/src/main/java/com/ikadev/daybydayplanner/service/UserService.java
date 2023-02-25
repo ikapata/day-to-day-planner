@@ -18,6 +18,8 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+
+
     public User save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Set.of(Role.USER));
@@ -27,5 +29,9 @@ public class UserService {
 
     public boolean usernameExists(String username) {
         return userRepository.existsByUsername(username);
+    }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).get();
     }
 }

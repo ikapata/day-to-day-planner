@@ -1,19 +1,22 @@
 package com.ikadev.daybydayplanner.service;
+
 import com.ikadev.daybydayplanner.persistence.model.DayEntry;
 import com.ikadev.daybydayplanner.persistence.model.Mood;
+import com.ikadev.daybydayplanner.persistence.model.User;
 import com.ikadev.daybydayplanner.persistence.repository.DayEntryRepository;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.time.LocalDate;
 import java.util.*;
 
 @Service
 public class EntryService {
     private final DayEntryRepository dayEntryRepository;
+    private final UserService userService;
 
-    public EntryService(DayEntryRepository dayEntryRepository) {
+    public EntryService(DayEntryRepository dayEntryRepository, UserService userService) {
         this.dayEntryRepository = dayEntryRepository;
+        this.userService = userService;
     }
 
     public List<DayEntry> getAllEntriesForUser(String username) {
@@ -24,22 +27,18 @@ public class EntryService {
         return dayEntryRepository.findByUserUsernameAndDate(username, date);
     }
 
-    public DayEntry saveEntry(DayEntry dayEntry) {
+    public DayEntry saveEntry(DayEntry dayEntry, String username) {
+        User user = userService.getUserByUsername(username);
+        dayEntry.setUser(user);
         return dayEntryRepository.save(dayEntry);
     }
 
-    public Map<Mood, List<LocalDate>> getMoodsForYear(int year, Principal principal) {
+    public Map<Mood, List<LocalDate>> getMoodsForYear(int year, String username) {
         LocalDate date = LocalDate.of(year, 1, 1);
-        List<DayEntry> entriesForYear = dayEntryRepository.findByUserUsernameAndDateBetween(
-                principal.getName(),
-                date,
-                date.plusYears(1));
+        List<DayEntry> entriesForYear = dayEntryRepository.findByUserUsernameAndDateBetween(username, date, date.plusYears(1));
         Map<Mood, List<LocalDate>> result = new HashMap<>();
         Arrays.stream(Mood.values()).forEach(mood -> result.put(mood, new ArrayList<>()));
-        entriesForYear.forEach(entry -> {
-            result.get(entry.getMood()).add(entry.getDate());
-                }
-        );
+        entriesForYear.forEach(entry -> result.get(entry.getMood()).add(entry.getDate()));
         return result;
     }
 }

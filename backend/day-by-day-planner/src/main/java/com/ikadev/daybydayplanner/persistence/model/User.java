@@ -3,6 +3,7 @@ package com.ikadev.daybydayplanner.persistence.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.NaturalId;
 
 import java.util.Set;
 
@@ -20,6 +21,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+
     private String password;
     private String username;
     @ElementCollection(fetch = FetchType.EAGER)
