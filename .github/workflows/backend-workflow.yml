@@ -36,6 +36,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          context: ./backend/day-by-day-planner
+          context: .
           file: ./backend/day-by-day-planner/Dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/day_to_day_planner_backend:latest
