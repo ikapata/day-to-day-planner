@@ -33,9 +33,9 @@ class DayEntryRepositoryTest {
     }
 
     @Test
-    void findByUserUsernameAndDate() throws ParseException {
+    void findByUserUsernameAndDate() {
         String username = "test";
-        User user = User.builder().username(username).build();
+        User user = User.builder().username(username).password("test").build();
         userRepository.save(user);
         LocalDate date = LocalDate.now();
         DayEntry dayEntry = DayEntry.builder()
@@ -59,7 +59,7 @@ class DayEntryRepositoryTest {
     @Test
     void findByUserUsername() {
         String username = "test";
-        User user = User.builder().username(username).build();
+        User user = User.builder().username(username).password("test").build();
         String username1 = "test2";
         User user1 = User.builder().username(username1).build();
         userRepository.saveAll(List.of(user, user1));
