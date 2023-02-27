@@ -17,7 +17,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
-        run: mvn -f ./backend/day-by-day-planner/pom.xml test
+        run: mvn -f ./backend/day-to-day-planner/pom.xml test
   
   docker: 
     runs-on: ubuntu-latest
@@ -37,5 +37,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          context: ./backend/day-by-day-planner
+          context: ./backend/day-to-day-planner
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/day_to_day_planner_backend:latest

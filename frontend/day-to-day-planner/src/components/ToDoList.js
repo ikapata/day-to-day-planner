@@ -21,14 +21,14 @@ export default function ToDoList(props) {
     }
 
     const handleCheckChange = (event, itemToCheck) => {
-        let newTodoList = props.todoList.map(item => {
+        let newToDoList = props.toDoList.map(item => {
             if (item.name === itemToCheck.name) {
                 item.checked = ! item.checked;
                 } 
                 return item;
         })
         props.setToDoList(
-            newTodoList)
+            newToDoList)
             }
 
 
@@ -37,14 +37,14 @@ export default function ToDoList(props) {
             name: currentItem,
             checked: false
         }
-        let newToDoList = [...props.todoList, item];
+        let newToDoList = [...props.toDoList, item];
 
         setCurrentItem("");
         props.setToDoList(
             newToDoList
         )
     }
-    let toDoListItems = props.todoList.map(item => {
+    let toDoListItems = props.toDoList.map(item => {
         return <li key={item.name} className="to-do-item">
             <input type="checkbox" className="to-do-item-input" checked={item.checked} onChange={(event) => handleCheckChange(event, item)} />
             <label htmlFor={item.name}>

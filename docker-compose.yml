@@ -9,7 +9,7 @@ services:
     links:
       - backend
   backend:
-    build: backend/day-by-day-planner
+    build: backend/day-to-day-planner
     ports:
       - "8080:8080"
     container_name: backend

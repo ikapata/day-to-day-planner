@@ -20,7 +20,7 @@ export default function DayEntry() {
             setEntryId(data.id);
             setMood(data.mood);
             setDiaryEntry(data.diaryEntry);
-            setToDoList(data.todoList);
+            setToDoList(data.toDoList);
         }}
 
         useEffect(() => {
@@ -57,7 +57,7 @@ export default function DayEntry() {
                 "date": date,
                 "diaryEntry": diaryEntry,
                 "mood": mood,
-                "todoList": toDoList
+                "toDoList": toDoList
             });
             const headers = new Headers();
             headers.append("Authorization", "Bearer " + localStorage.getItem("userToken"));
@@ -79,7 +79,7 @@ export default function DayEntry() {
             <button className="save-btn" onClick={saveForDate}>Save</button>
             <CustomCalendar date={dateFromCalendar} setDate={setDateFromCalendar}/>
             <MoodTracker mood={mood} setMood={setMood}/>
-            <ToDoList todoList={toDoList} setToDoList={setToDoList}/>
+            <ToDoList toDoList={toDoList} setToDoList={setToDoList}/>
             <DiaryEntry entry={diaryEntry} setEntry={setDiaryEntry}/>
         </div>
 
