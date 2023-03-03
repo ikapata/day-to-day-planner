@@ -29,8 +29,9 @@ class AuthEndpointTest {
         String uriRegister = uri + "/register";
 
         String json = """
-                {"username": "test1",
-                "password": "test"
+                {"username": "test10",
+                "password": "test",
+                "email": "test@gmail.com"
                 }
                 """;
         mockMvc.perform(post(uriRegister)
@@ -38,6 +39,37 @@ class AuthEndpointTest {
                         .content(json))
                 .andExpect(status().is2xxSuccessful());
     }
+
+    @Test
+    void registerUserNoEmail() throws Exception {
+        String uriRegister = uri + "/register";
+
+        String json = """
+                {"username": "test2",
+                "password": "test",
+                }
+                """;
+        mockMvc.perform(post(uriRegister)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    void registerUserNoUsername() throws Exception {
+        String uriRegister = uri + "/register";
+
+        String json = """
+                {"email": "test@test.com",
+                "password": "test",
+                }
+                """;
+        mockMvc.perform(post(uriRegister)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(status().is4xxClientError());
+    }
+
 
     @Test
     @WithUserDetails("test")

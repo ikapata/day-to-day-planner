@@ -32,7 +32,7 @@ class DayEntryRepositoryTest {
     @Test
     void findByUserUsernameAndDate() {
         String username = "test";
-        User user = User.builder().username(username).password("test").build();
+        User user = User.builder().username(username).password("test").email("test@test.com").build();
         userRepository.save(user);
         LocalDate date = LocalDate.now();
         DayEntry dayEntry = DayEntry.builder()
@@ -56,9 +56,9 @@ class DayEntryRepositoryTest {
     @Test
     void findByUserUsername() {
         String username = "test";
-        User user = User.builder().username(username).password("test").build();
+        User user = User.builder().username(username).email("test@test.com").password("test").build();
         String username1 = "test2";
-        User user1 = User.builder().username(username1).build();
+        User user1 = User.builder().username(username1).email("test1@test.com").password("test").build();
         userRepository.saveAll(List.of(user, user1));
         DayEntry dayEntry = DayEntry.builder()
                 .user(user)

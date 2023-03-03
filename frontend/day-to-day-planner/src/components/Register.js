@@ -6,6 +6,7 @@ export default function Register() {
     const [userData, setUserData] = useState({
         "username": "", "password": "", "firstName": "", "lastName": "", "email": ""
     });
+    const [error, setError] = useState("");
 
     const handleChange = (event) => {
         setUserData(prev => {
@@ -15,7 +16,12 @@ export default function Register() {
         })
     }
     const navigate = useNavigate();
-    const register = () => {
+    const register = (event) => {
+        event.preventDefault();
+        if (userData.email === "" || userData.username === "" || userData.password === "") {
+            setError("Please fill in all fields");
+            return;
+        }
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
 
@@ -26,23 +32,22 @@ export default function Register() {
         };
 
         fetch(BASE_URI + "/api/auth/register", requestOptions)
-            .then(result => navigate("/login"))
-            .catch(error => console.log('error', error));
+            .then(response =>   (response.status === 200) ? navigate("/login") : setError("This email or username is already in use!"))
+            .catch(error => setError(error.message));
     }
     return (<div className="form-group">
         <h1>Register</h1>
-        <label>First name: </label>
-        <input type="text" className="form-control" name="firstName" value={userData.firstName} required
-               onChange={handleChange}/>
-        <br/><label>Last name: </label>
-        <input type="text" className="form-control" name="lastName" value={userData.lastName} onChange={handleChange} required/>
+        {error && <div style={{margin: "auto", color: "white", background: "red", borderRadius: "10px", padding: "10px", width: "50%"}}
+                       className="error">{error}</div>}
+        <form>
         <br/><label>E-mail: </label>
-        <input type="email" className="form-control" name="email" value={userData.email} onChange={handleChange} required/>
+        <input type="email" className="form-control" name="email" value={userData.email} onChange={handleChange} required={true} />
         <br/><label>Username: </label>
-        <input type="text" className="form-control" name="username" value={userData.username} onChange={handleChange} required/>
+        <input type="text" className="form-control" name="username" value={userData.username} onChange={handleChange} required={true} />
         <br/><label>Password: </label>
-        <input type="password" className="form-control" name="password" value={userData.password} required
+        <input type="password" className="form-control" name="password" value={userData.password} required={true}
                onChange={handleChange}/>
-        <button className="save-btn" onClick={register}>Register</button>
+        <input type="submit" className="save-btn" onClick={register} value="Register" />
+        </form>
     </div>)
 }

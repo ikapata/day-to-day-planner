@@ -27,9 +27,9 @@ class UserRepositoryTest {
     @Test
     void findByUsername() {
         String username = "test";
-        User user = User.builder().username(username).build();
+        User user = User.builder().username(username).email("test@test.com").password("password").build();
         String username1 = "test2";
-        User user1 = User.builder().username(username1).build();
+        User user1 = User.builder().username(username1).email("test2@test.com").password("password").build();
         userRepository.saveAll(List.of(user, user1));
         Optional<User> result = userRepository.findByUsername(username);
 
@@ -51,7 +51,7 @@ class UserRepositoryTest {
     @Test
     void existsByUsernameIfExists() {
         String username = "test";
-        User user = User.builder().username(username).build();
+        User user = User.builder().username(username).email("test@test.com").password("password").build();
         userRepository.save(user);
         boolean result = userRepository.existsByUsername(username);
 
