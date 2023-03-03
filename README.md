@@ -40,6 +40,8 @@ The app will be available at http://localhost:3000!
 
 ### Frontend
 
+The other option is to run the frontend and backend separately. 
+
 Install dependencies
 
 ```bash
@@ -65,12 +67,12 @@ Add your database name, user and password to the application.yml file. Then run 
 It will start the server on port 8080.
 
 
-
 ## Screenshots
 
-<img src="images/register_page.png" width="400px">
-<img src="images/login_page.png" width="400px">
-<img src="images/calendar.png" width="400px">
+<img src="images/register.png" width="400px">
+<img src="images/login.png" width="400px">
+<img src="images/overview.png" width="400px">
+<img src="images/mood_overview.png" width="400px">
 
 
 ## Roadmap
@@ -82,7 +84,7 @@ It will start the server on port 8080.
 - [x]  Dockerize
 - [x]  Mood Tracker Page
 - [ ]  Profile Page
-- [ ]  Google synchronization
+- [ ]  Google Sync
 
 Stay tuned for more features in the future!
 
