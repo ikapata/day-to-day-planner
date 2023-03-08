@@ -31,10 +31,18 @@ Go to the project directory
 ### Docker
 The easiest way to start the app is using docker-compose. 
 You only need Docker installed!
+
+You can build and run the docker images (using the docker-compose.yml file).
 To start the app run:
 ```bash
   docker compose up
 ```
+ 
+Or you can use the already build images from Docker Hub (using the docker-compose-images.yml):
+```bash
+  docker compose -f docker-compose-images.yml up
+```
+
 The app will be available at http://localhost:3000!
 
 
