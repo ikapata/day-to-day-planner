@@ -1,7 +1,7 @@
 
 # Day to Day Planner
 
-A day-to-day planner, where the user can add a to-do list, a diary entry and track their mood for each day. 
+A day-to-day planner is a web application, where the user can add a to-do list, a diary entry and track their mood for each day. The goal for this project is to help people to organize their day-to-day life. 
 
 
 
@@ -87,8 +87,8 @@ It will start the server on port 8080.
 
 - [x]  Setup project
 - [x]  Add Spring Security and Users
+- [x]  Test backend (more blackbox, whitebox tests to come!)
 - [x]  Add frontend
-- [x]  Test backend (more tests to come!)
 - [x]  Dockerize
 - [x]  Mood Tracker Page
 - [ ]  Profile Page
