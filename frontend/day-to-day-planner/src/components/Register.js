@@ -4,7 +4,7 @@ import {BASE_URI} from "../constants/constants";
 
 export default function Register() {
     const [userData, setUserData] = useState({
-        "username": "", "password": "", "firstName": "", "lastName": "", "email": ""
+        "username": "", "password": "", "email": ""
     });
     const [error, setError] = useState("");
 

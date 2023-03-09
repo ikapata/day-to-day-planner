@@ -48,7 +48,7 @@ export default function ToDoList(props) {
         return <li key={item.name} className="to-do-item">
             <input type="checkbox" className="to-do-item-input" checked={item.checked} onChange={(event) => handleCheckChange(event, item)} />
             <label htmlFor={item.name}>
-            <span style={{margin: "10px"}}>{item.name}</span>
+            <span>{item.name}</span>
             <button onClick={() => handleEdit(item.name)}><span role="img" aria-label="edit">✎</span></button>
             <button onClick={() => handleDelete(item.name)}><span role="img" aria-label="delete">🗑️</span></button>
             </label>
