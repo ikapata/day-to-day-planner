@@ -14,6 +14,10 @@ A day-to-day planner is a web application, where the user can add a to-do list, 
 
 **Database:**  Postgres
 
+## Technologies
+
+Spring Boot, Spring Security, Spring Data JPA, Spring 
+
 ## Run Locally
 
 Clone the project
@@ -65,7 +69,8 @@ Start react on port 3000.
 
 ### Backend
 
-Add your database name, user and password to the application.yml file. Then run with Maven:
+First, you have to export the SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD as your environment variables. 
+Then run with Maven:
 
 ```bash
   cd backend/day-to-day-planner

@@ -27,8 +27,7 @@ export default function ToDoList(props) {
                 } 
                 return item;
         })
-        props.setToDoList(
-            newToDoList)
+        props.setToDoList(newToDoList)
             }
 
 
@@ -44,6 +43,7 @@ export default function ToDoList(props) {
             newToDoList
         )
     }
+
     let toDoListItems = props.toDoList.map(item => {
         return <li key={item.name} className="to-do-item">
             <input type="checkbox" className="to-do-item-input" checked={item.checked} onChange={(event) => handleCheckChange(event, item)} />
