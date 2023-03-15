@@ -5,6 +5,8 @@ services:
     ports:
       - "3000:3000"
     container_name: frontend
+    environment:
+      - BACKEND_URL=http://backend:8080
     restart: always
     links:
       - backend
@@ -13,7 +15,6 @@ services:
     ports:
       - "8080:8080"
     container_name: backend
-
     links:
       - db
     depends_on:
@@ -23,15 +24,19 @@ services:
       - SPRING_DATASOURCE_USERNAME=daytodayplanner
       - SPRING_DATASOURCE_PASSWORD=daytodayplanner
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  
   db:
-    image: postgres:11.6-alpine
+    image: postgres:latest
     ports:
       - "5431:5432"
     container_name: db
     restart: always
+    volumes:
+      - daytodaydata:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=daytodayplanner
       - POSTGRES_PASSWORD=daytodayplanner
       - POSTGRES_DB=daytodayplanner
-    volumes:
-      - /var/lib/postgresql/data
+
+volumes:
+  daytodaydata:
